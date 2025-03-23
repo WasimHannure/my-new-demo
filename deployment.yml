@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydemo-eks
+  labels:
+    app: devops-eks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-eks
+  template:
+    metadata:
+      labels:
+        app: devops-eks
+    spec:
+      containers:
+        - name: class-demo
+          image: 984639714947.dkr.ecr.us-east-1.amazonaws.com/myspace/myrepo2303:1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
